@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -276,18 +278,35 @@
       <div class="search-results"></div>
     </section>
     <div id="cart" class="cart-hidden">
-      <div class="cart-row">
-        <h2 style="text-align: center">Your Cart</h2>
-        <i
-          class="fa fa-close icon__item"
-          id="cart-button"
-          onclick="toggleCart()"
-        ></i>
-      </div>
-      <!-- Cart section -->
-      <ul id="cart-items"></ul>
-      <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: $0</h3>
-      <button id="clear-cart" onclick="clearCart()">Clear Cart</button>
+  <div class="cart-row">
+    <h2 style="text-align: center">Your Cart</h2>
+    <i
+      class="fa fa-close icon__item"
+      id="cart-button"
+      onclick="toggleCart()"
+    ></i>
+  </div>
+
+  <ul id="cart-items"></ul>
+  <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: ₹0</h3>
+
+  <!-- Order button -->
+  <button onclick="placeOrder()" style="
+    padding: 10px 25px;
+    background-color: #088178;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    transition: 0.3s ease;
+  ">
+    <i class="fa fa-shopping-cart"></i> Buy Now
+  </button>
+</div>
+     
     </div>
     <!-- Footer section -->
     <footer class="section-p1">
@@ -341,8 +360,23 @@
         <p>Developed by <a style="text-decoration: underline;" href="https://www.linkedin.com/in/lara-jerone-j-62604124b">Lara Jerone J</a>.</p>
       </div>
     </footer>
+<script>
+  function placeOrder() {
+    document.getElementById("cart-items").innerHTML = "";
+    document.getElementById("cart-total").textContent = "Total: ₹0";
+    document.getElementById("cart").classList.add("cart-hidden");
+    Swal.fire({
+  title: 'Order Placed!',
+  text: 'Thank you for your purchase. Your order has been successfully placed.',
+  icon: 'success',
+  confirmButtonText: 'OK',
+  confirmButtonColor: '#4CAF50'
+});
+  }
+</script>
 
     <script src="../js/script.js"></script>
     <!-- <script src="script.js"></script> -->
   </body>
 </html>
+  

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -159,19 +160,35 @@
     </section>
 
     <div id="cart" class="cart-hidden">
-      <div class="cart-row">
-        <h2 style="text-align: center">Your Cart</h2>
-        <i
-          class="fa fa-close icon__item"
-          id="cart-button"
-          onclick="toggleCart()"
-        ></i>
-      </div>
+  <div class="cart-row">
+    <h2 style="text-align: center">Your Cart</h2>
+    <i
+      class="fa fa-close icon__item"
+      id="cart-button"
+      onclick="toggleCart()"
+    ></i>
+  </div>
 
-      <ul id="cart-items"></ul>
-      <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: $0</h3>
-      <button id="clear-cart" onclick="clearCart()">Clear Cart</button>
-    </div>
+  <ul id="cart-items"></ul>
+  <h3 style="margin: auto; padding: 10px 0px" id="cart-total">Total: ₹0</h3>
+
+  <!-- Order button -->
+  <button onclick="placeOrder()" style="
+    padding: 10px 25px;
+    background-color: #088178;
+    color: white;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px auto;
+    display: block;
+    transition: 0.3s ease;
+  ">
+    <i class="fa fa-shopping-cart"></i> Buy Now
+  </button>
+</div>
+
 
     <div id="alert" class="alert">
       <span id="alert-message">Product is added to Cart!</span>
@@ -193,6 +210,9 @@
     <h3 class="header">Full Product Description</h3>
 
     <section id="prodetails" class="section-p1">
+    
+
+
       <!-- <div class="img-section">
     <img src="../images/products/f1.jpg" alt="">
     <div class="small-images">
@@ -226,8 +246,7 @@
   </div> -->
     </section>
 
-    <!-- Featured Products -->
-    /*I will add Featured products later on*/
+
 
     <!-- Footer section -->
     <footer class="section-p1">
@@ -283,6 +302,20 @@
 
       </div>
     </footer>
+    <script>
+  function placeOrder() {
+    document.getElementById("cart-items").innerHTML = "";
+    document.getElementById("cart-total").textContent = "Total: ₹0";
+    document.getElementById("cart").classList.add("cart-hidden");
+    Swal.fire({
+  title: 'Order Placed!',
+  text: 'Thank you for your purchase. Your order has been successfully placed.',
+  icon: 'success',
+  confirmButtonText: 'OK',
+  confirmButtonColor: '#4CAF50'
+});
+  }
+</script>
     <script src="../js/cart.js"></script>
     <!-- <script src="script.js"></script> -->
   </body>
